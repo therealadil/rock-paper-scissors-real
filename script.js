@@ -68,6 +68,8 @@ function play() {
     
 }
 
+console.log("yo");
+
 
 
 
