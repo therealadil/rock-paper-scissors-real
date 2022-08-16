@@ -1,3 +1,6 @@
+let playerScore = 0;
+let compScore = 0;
+
 function getComputerChoice  () {
 
     const gameResults = ["rock", "paper", "scissors"];
@@ -5,6 +8,7 @@ function getComputerChoice  () {
     const randomResult = Math.floor(Math.random()*3);
 
     return gameResults[randomResult];
+
 }
 
 function askPlayer () {
@@ -22,21 +26,30 @@ function playRound (playerSelection, computerSelection) {
     
 
     if (playerSelection == computerSelection) {
-        return "You picked " + playerSelection + ". They picked " + computerSelection + ". It's a tie." 
-    } else if (
+        return ("You picked " + playerSelection + ". They picked " + computerSelection + ". It's a tie. " +
+            
+        "Your score is " + playerScore + ". The computer's score is " + compScore + ".");    } 
+        else if (
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")
         ) {
-            return "You picked " + playerSelection + ". They picked " + computerSelection + ". You win." 
+            playerScore+=1;
+            return ("You picked " + playerSelection + ". They picked " + computerSelection + ". You win. " +
+            
+            "Your score is " + playerScore + ". The computer's score is " + compScore + ".");
+
         } else if (
             (playerSelection == "scissors" && computerSelection == "rock") ||
             (playerSelection == "rock" && computerSelection == "paper") ||
             (playerSelection == "paper" && computerSelection == "scissors")
         ) {
-            return "You picked " + playerSelection + ". They picked " + computerSelection + ". You lose." 
+            compScore+=1;
+            return ("You picked " + playerSelection + ". They picked " + computerSelection + ". You lose. " +
+            
+            "Your score is"  + playerScore + ". The computer's score is " + compScore + ".");
         } else {
-            alert("this is invalid entry");
+            alert("This is an invalid entry, please choose again.");
             console.log(playRound(askPlayer(), getComputerChoice()));
         }
 
@@ -46,9 +59,22 @@ function playRound (playerSelection, computerSelection) {
 
 
 
-    function game () {
-        for (let i = 0; i<5; i++) {
-            playRound( askPlayer(), getComputerChoice() )
+function play() {
 
-        }
-    }
+        console.log(playRound( askPlayer() , getComputerChoice() ));
+
+
+        
+    
+}
+
+
+
+
+
+// on button click
+// 	asks for choice ✅
+// 	evaluates entry ✅
+// 	returns result ✅
+// 	find out who won 
+// 	adds 1 to score of winner
