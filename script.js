@@ -87,9 +87,7 @@ function playRound (playerSelection, computerSelection) {
 
 let div = document.querySelector('#results')
 
-div.addEventListener('click', function(e){
-    div.innerHTML = "lol"
-})
+
 
 
 
