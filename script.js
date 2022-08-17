@@ -1,6 +1,30 @@
 let playerScore = 0;
 let compScore = 0;
 
+let playerChoice = ""
+
+
+let rockB = document.querySelector('#rock')
+rockB.addEventListener('click', function(e){
+    playerChoice = "rock"
+    play();
+})
+
+let paperB = document.querySelector('#paper')
+paperB.addEventListener('click', function(e){
+    playerChoice = "paper"
+    play();
+})
+
+let scissorsB = document.querySelector('#scissors')
+scissorsB.addEventListener('click', function(e){
+    playerChoice = "scissors"
+    play();
+})
+
+
+
+
 function getComputerChoice  () {
 
     const gameResults = ["rock", "paper", "scissors"];
@@ -11,13 +35,13 @@ function getComputerChoice  () {
 
 }
 
-function askPlayer () {
-    const playerChoice = (prompt("Rock, Paper, or Scissors?")).toLowerCase();
+// function askPlayer () {
+//     const playerChoice = (prompt("Rock, Paper, or Scissors?")).toLowerCase();
     
-    return playerChoice;
+//     return playerChoice;
 
 
-}
+// }
 
 
 
@@ -26,49 +50,58 @@ function playRound (playerSelection, computerSelection) {
     
 
     if (playerSelection == computerSelection) {
-        return ("You picked " + playerSelection + ". They picked " + computerSelection + ". It's a tie. " +
-            
-        "Your score is " + playerScore + ". The computer's score is " + compScore + ".");    } 
+        return `You picked ${playerSelection}. 
+        They picked ${computerSelection}. 
+        This round is a tie. 
+        Your score is ${playerScore}.
+        The computer's score is ${compScore}.`
+    } 
         else if (
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
         (playerSelection == "scissors" && computerSelection == "paper")
         ) {
             playerScore+=1;
-            return ("You picked " + playerSelection + ". They picked " + computerSelection + ". You win. " +
-            
-            "Your score is " + playerScore + ". The computer's score is " + compScore + ".");
-
+            return `You picked ${playerSelection}. 
+            They picked ${computerSelection}. 
+            You win this round. 
+            Your score is ${playerScore}.
+            The computer's score is ${compScore}.`
         } else if (
             (playerSelection == "scissors" && computerSelection == "rock") ||
             (playerSelection == "rock" && computerSelection == "paper") ||
             (playerSelection == "paper" && computerSelection == "scissors")
         ) {
             compScore+=1;
-            return ("You picked " + playerSelection + ". They picked " + computerSelection + ". You lose. " +
-            
-            "Your score is"  + playerScore + ". The computer's score is " + compScore + ".");
-        } else {
-            alert("This is an invalid entry, please choose again.");
-            console.log(playRound(askPlayer(), getComputerChoice()));
-        }
+            return `You picked ${playerSelection}.
+            They picked ${computerSelection}.
+            You lose this round.
+            Your score is ${playerScore}.
+            The computer's score is ${compScore}.`
+
+
+        } 
 
 
 }
 
+let div = document.querySelector('#results')
+
+div.addEventListener('click', function(e){
+    div.innerHTML = "lol"
+})
 
 
 
 function play() {
 
-        console.log(playRound( askPlayer() , getComputerChoice() ));
-
+        let test = playRound( playerChoice , getComputerChoice() )
+        div.innerHTML = test
 
         
     
 }
 
-console.log("yo");
 
 
 
